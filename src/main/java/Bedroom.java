@@ -28,4 +28,12 @@ public class Bedroom {
     public ArrayList<Guest> getGuests() {
         return guests;
     }
+
+    public void addGuest(Guest guest) {
+        guests.add(guest);
+    }
+
+    public void clearRoom() {
+        guests.clear();
+    }
 }
