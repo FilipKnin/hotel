@@ -13,7 +13,7 @@ public class HotelTest {
     @Before
     public void beforeEach() {
         hotel = new Hotel("Fluffy Towers");
-        bedroom = new Bedroom(10,2,"DBL");
+        bedroom = new Bedroom(10,2,"DBL", 24.99);
         conferenceRoom = new ConferenceRoom("The Hall", 200);
         diningRoom = new DiningRoom("The Egg Lounge", 50);
         guest = new Guest();
@@ -118,4 +118,14 @@ public class HotelTest {
         hotel.clearConferenceRoom(conferenceRoom);
         assertEquals(0, conferenceRoom.getGuestList().size() );
     }
+
+    @Test
+    public void makeBooking(){
+        hotel.addBedroom(bedroom);
+        Booking booking  = hotel.makeBooking(10, 5);
+        assertEquals(10, booking.getRoom().getRoomNumber() );
+        assertEquals(5, booking.getNumberOfNights());
+        assertEquals(124.95, booking.getBill(), 0.5);
+    }
+
 }

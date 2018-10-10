@@ -9,7 +9,7 @@ public class BedroomTest {
 
     @Before
     public void beforeEach(){
-        bedroom = new Bedroom(13, 2, "DBL");
+        bedroom = new Bedroom(13, 2, "DBL", 24.99);
         guest = new Guest();
     }
 
@@ -31,6 +31,11 @@ public class BedroomTest {
     @Test
     public void getGuestList(){
         assertEquals(0, bedroom.getGuestList().size() );
+    }
+
+    @Test
+    public void getRate(){
+        assertEquals(24.99, bedroom.getRate(), 0.01);
     }
 
     @Test
