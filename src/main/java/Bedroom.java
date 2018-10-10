@@ -25,7 +25,7 @@ public class Bedroom {
         return type;
     }
 
-    public ArrayList<Guest> getGuests() {
+    public ArrayList<Guest> getGuestList() {
         return guests;
     }
 
