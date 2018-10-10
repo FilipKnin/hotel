@@ -59,16 +59,22 @@ public class HotelTest {
 
     @Test
     public void checkInBedroom(){
+        hotel.addBedroom(bedroom);
         hotel.checkInBedroom(guest, bedroom);
         assertEquals(1, bedroom.getGuestList().size() );
+        assertEquals(0, hotel.getBedroomList().size());
+        assertEquals(1, hotel.getOccupied().size());
     }
 
     @Test
     public void checkOutBedroom(){
+        hotel.addBedroom(bedroom);
         hotel.checkInBedroom(guest, bedroom);
         assertEquals(1, bedroom.getGuestList().size() );
         hotel.checkOutBedroom(bedroom);
         assertEquals(0, bedroom.getGuestList().size() );
+        assertEquals(1, hotel.getBedroomList().size());
+        assertEquals(0, hotel.getOccupied().size());
     }
 
     @Test
@@ -127,5 +133,6 @@ public class HotelTest {
         assertEquals(5, booking.getNumberOfNights());
         assertEquals(124.95, booking.getBill(), 0.5);
     }
+
 
 }

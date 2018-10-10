@@ -5,12 +5,14 @@ public class Hotel {
     private ArrayList<Bedroom> bedroomList;
     private ArrayList<DiningRoom> diningRoomList;
     private ArrayList<ConferenceRoom> conferenceRoomList;
+    private ArrayList<Bedroom> occupied;
 
     public Hotel(String name) {
         this.name = name;
         this.bedroomList = new ArrayList<>();
         this.diningRoomList = new ArrayList<>();
         this.conferenceRoomList = new ArrayList<>();
+        this.occupied = new ArrayList<>();
     }
 
 
@@ -43,13 +45,18 @@ public class Hotel {
         return conferenceRoomList;
     }
 
-
     public void checkInBedroom(Guest guest, Bedroom bedroom) {
+        if(getBedroomList().contains(bedroom)){
         bedroom.addGuest(guest);
+        bedroomList.remove(bedroom);
+        occupied.add(bedroom);
+        }
     }
 
     public void checkOutBedroom(Bedroom bedroom) {
         bedroom.clearRoom();
+        occupied.remove(bedroom);
+        bedroomList.add(bedroom);
     }
 
 
@@ -86,5 +93,10 @@ public class Hotel {
             }
         }
         return booking;
+    }
+
+
+    public ArrayList<Bedroom> getOccupied() {
+        return occupied;
     }
 }
